@@ -1,4 +1,4 @@
-package com.corundumstudio.socketio.demo;
+package com.socketio.luno;
 
 public class ChatObject {
 

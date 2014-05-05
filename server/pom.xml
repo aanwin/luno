@@ -2,14 +2,14 @@
  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
  <modelVersion>4.0.0</modelVersion>
 
- <groupId>com.corundumstudio.socketio</groupId>
- <artifactId>demo</artifactId>
+ <groupId>com.socketio</groupId>
+ <artifactId>luno</artifactId>
  <version>1.0.0-SNAPSHOT</version>
  <packaging>jar</packaging>
- <inceptionYear>2012</inceptionYear>
+ <inceptionYear>2014</inceptionYear>
 
  <properties>
-     <main.class>com.corundumstudio.socketio.demo.ChatLauncher</main.class>
+     <main.class>com.socketio.luno.SslChatLauncher</main.class>
      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
  </properties>
 
@@ -23,13 +23,12 @@
 
  <developers>
      <developer>
-         <id>mrniko</id>
-         <name>Nikita Koksharov</name>
+         <id>anguyenp</id>
+         <name>Anthony Nguyen</name>
          <roles>
              <role>Architect</role>
              <role>Developer</role>
          </roles>
-         <timezone>+4</timezone>
      </developer>
  </developers>
 
