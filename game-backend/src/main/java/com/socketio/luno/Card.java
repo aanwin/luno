@@ -30,5 +30,17 @@ final public class Card {
         else
             return color.toString()+spec.toString();
     }
+    public String getNameColorized() {
+        String styleColor = color.toString();
+        //Yellow is really hard to see
+        if (color.toString().equals("Yellow")) {
+            styleColor = "Gold";
+        
+        if(num!=-1)
+            return "<span style='color: " + styleColor + "'>" + color.toString() +  Integer.toString(num) + "</span>";
+        else
+            return "<span style='color: " + styleColor + "'>" + color.toString() +  spec.toString() + "</span>";
+
+    }
 }
 

@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.corundumstudio.socketio.Configuration;
+import com.corundumstudio.socketio.SocketIOClient;
+import com.corundumstudio.socketio.SocketIOServer;
+import com.corundumstudio.socketio.listener.DataListener;
+
 /**
  *
  * @author zjy
@@ -18,18 +23,46 @@ final public class Player {
     boolean unoble;
     //boolean ifLost;
     int points;
+    private SocketIOClient socket; 
+    private LunoGame currentGame;    
     
-    
-    public Player(String user){
-        this.user=user;
-        leftCoins=getCoins(user);
-        handCards=new ArrayList<Card>();
-        bet=0;
-        ifUno=false;
+    public Player(String username, SocketIOClient socket){
+        this.user = username;
+        leftCoins = getCoins(user);
+        handCards = new ArrayList<Card>();
+        bet = 0;
+        ifUno = false;
         //ifLost=false;
-        points=0;
+        points= 0;
+        this.socket = socket;
+        this.currentGame = null;
     }
     
+    public void setCurrentGame(LunoGame game) {
+        this.currentGame = game;
+    }
+
+    public LunoGame getCurrentGame() {
+        return this.currentGame;
+    }
+
+    public void quitGame() {
+        this.currentGame = null;
+        points = 0;
+        handCards = new ArrayList<Card>(); 
+    }
+
+    public void joinGame() {
+    }
+
+    public void setSocket(SocketIOClient socket) {
+        this.socket = socket;
+    } 
+
+    public SocketIOClient getSocket() {
+        return socket;
+    }
+
     public void addHandCard(Card card) throws IllegalArgumentException{
         if(handCards.size()<=108)    
             handCards.add(card);
@@ -73,6 +106,13 @@ final public class Player {
             names.add(card.getName());
         return names;
     }
+    public ArrayList getHandCardsNameColorized(){
+        ArrayList<String> names=new ArrayList<String>();
+        for(Card card:handCards)
+            names.add(card.getNameColorized());
+        return names;
+    }
+
     public int handPoints(){
         for(Card card:handCards)
             points+=card.point;
@@ -152,7 +192,7 @@ final public class Player {
     ////Private Methods/////////////
     //Database query and update////////
     private int getCoins(String user){
-        return 0;
+        return 1000;
     }
     private void updatePlayer(String user, int coins, String state){
     }
