@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #Luno
 
 #Usage
@@ -16,7 +15,3 @@
 # Note about Chrome and IE browsers
  If you want to open index.html in Chrome or IE browser you need to host it somewhere (nginx or apache, for example),
  or page will not work due to absence of correct "origin" http header.
-=======
-luno
-====
->>>>>>> 672bb0af2b302f04d8e8055cc61642793b7f6fce
