@@ -1,0 +1,124 @@
+{% extends "inner_base.html" %}
+
+{% block title %}Welcome Inside!{% endblock %}
+    {% block header %}Let's play Luno!{% endblock %}
+{% block main %}
+
+	<style>
+		body { 
+			padding:20px;
+		}
+		#console { 
+			height: 400px; 
+			overflow: auto; 
+		}
+		.username-msg {color:purple;}
+		.connect-msg {color:green;}
+		.disconnect-msg {color:red;}
+		.send-msg {color:#888}
+	</style>
+
+
+	<script src="/static/js/socket.io/socket.io.js"></script>
+        <script src="/static/js/moment.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	
+	<script>
+
+                var userName = '{{ session['username']}}';
+                var userNameSigned = '{{ session['signed_username']}}';
+		var socket =  io.connect('https://162.243.24.168:10443');
+                $(document).ready(function() {
+                    document.getElementById('msg').onkeydown = function(event) {
+                        if (event.keyCode == 13) {
+                            sendMessage();
+                        }
+                    };
+                });
+		socket.on('connect', function() {
+			output('<span class="connect-msg">You have connected to the server!</span>');
+                        socket.emit('player_connect', {userName: userName, userNameSigned: userNameSigned, message: userName});
+		});
+		
+		socket.on('chatevent', function(data) {
+			output('<span class="username-msg">' + data.userName + ':</span> ' + data.message);
+		});
+
+                socket.on('server_response', function(data) {
+                        output('<span class="username-msg">' + data.userName + ':</span> ' + data.message);
+                });
+
+                socket.on('bid', function(data) {
+                        output('<span class="username-msg">' + data.userName + ':</span> ' + data.message);
+                });
+
+		
+		socket.on('disconnect', function() {
+			output('<span class="disconnect-msg">The client has disconnected!</span>');
+		});
+
+
+                function sendDisconnect() {
+                        socket.disconnect();
+                }
+		
+		function sendMessage() {
+                        var message = $('#msg').val();
+                        $('#msg').val('');
+                        switch(message.split(" ")[0]) {
+                            case "bid": 
+                                socket.emit('bid', {userName: userName, userNameSigned: userNameSigned, message: message});
+                                break;
+                            case "help":
+                                socket.emit('help', {userName: userName, userNameSigned: userNameSigned, message: message});
+                                break;
+                            case "join":
+				socket.emit('join_game', {userName: userName, userNameSigned: userNameSigned, message: message});
+                                break;
+                            case "create":
+                                socket.emit('create_game', {userName: userName, userNameSigned: userNameSigned, message: message});
+                                break;
+                            case "leave":
+                                socket.emit('leave_game', {userName: userName, userNameSigned: userNameSigned, message: message});
+                                break;
+                            case "gamelist":
+                                socket.emit('game_list', {userName: userName, userNameSigned: userNameSigned, message: message});
+                                break;
+                            default:
+                                //disable chat for simplicity
+                                //socket.emit('chatevent', {userName: userName, userNameSigned: userNameSigned, message: message});
+                                
+                                //we assume that anything that wasn't above is an attempted game move, futher filtering later
+                                 socket.emit('game_move', {userName: userName, userNameSigned: userNameSigned, message: message});
+                        }
+		}
+		
+		function output(message) {
+                        var currentTime = "<span class='time'>" +  moment().format('HH:mm:ss.SSS') + "</span>";
+                        var element = $("<div>" + currentTime + " " + message + "</div>");
+			$('#console').append(element);
+                        var divx = document.getElementById('console');
+                        divx.scrollTop = divx.scrollHeight;
+
+		}
+		
+	</script>
+</head>
+
+<body>
+	<br/>
+
+	<div id="console" class="well">
+	</div>
+
+        <form class="well form-inline" onsubmit="return false;">
+           <input id="msg" class="input-xlarge" type="text" placeholder="Type something..."/>
+           <button type="button" onClick="sendMessage()" class="btn">Send</button>
+           <button type="button" onClick="sendDisconnect()" class="btn">Disconnect</button>
+        </form>
+    
+
+	
+</body>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+#forms {
+  padding: 50px;
+}
+
+
+body {  background:#fafafa url('http://i58.tinypic.com/mtxouo.png') repeat;  }
+.panel-title {
+color: #ffffff;
+}
+
+.panel-heading {
+background-color: #438eb9 !important;;
+}
+.wrapper {
+    background-color: #fff;
+    padding: 1em 2em 2em 2em;
+    border: 1px solid #999999;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+
+}   
+

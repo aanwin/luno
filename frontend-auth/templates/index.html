@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome!{% endblock %}
+
+{% block main %}
+      <!-- Main hero unit for a primary marketing message or call to action --> 
+      <div class="hero-unit wrapper"> 
+        <h1>Welcome to Luno!</h1>
+	<hr>
+	<h3>To start playing, click 'Get Started!'</h3>
+        <div>
+
+<p>The game begins when all players have finished their game or when the game creator presses start game and all other players accept.</p>
+
+<p>
+Play now: press the “Play Now” button and you will enter directly into the first minimum bet (50 coins) game available or a new game which will begin when another player joins.
+Create game: Press the button create game to create and choose the setting you want. More players will need to join before you start playing.</p>
+Configuration
+
+<p>
+When creating a game you can define the following settings:</p>
+
+<p>
+Gamae name.
+Number of players (2 to 4 players).
+Bet (50 coins at least).
+Allow observers (others can see your game once it has started).
+Betting: Each game has a minimum bet of 50 coins, so to play any game you will need to bet 50 or more of your coins depending on the game.
+
+The winner of the match will win coins off other users and points according to the amount of coins won. Remember that if you leave a started game you forfeit your coins for that game.
+
+<h3>Introduction</h3>
+
+Luno is a cards game very similar to the popular Uno which is player all arround the world.
+
+It is played with an special deck of 108 cards divided in 4 colored groups: red, blue, green and yellow.
+
+Numbered cards
+
+76 numbered cards from 0 to 9 (each one repeated twice except 0)
+
+These cards have a points value equal to their number.
+
+Special cards
+
+
+8 draw cards (+2)
+8 skip cards
+8 reverse cards
+
+4 wildcards
+4 wildcards draw +4
+Objective
+
+The game’s objective is to be the first one to discard all of your cards.
+
+Gameplay
+
+The game starts by dealing 7 cards for player. The rest of the cards remain in the deck to be drawed when needed and last card is left upside for discards.
+
+You have to discard a card with the same color, number or symbol as the one on the table. You have to discard a card with the same color, number or symbol as the one on the table.If you don’t have a proper card to discard, you’ll have to draw one from the deck. If you draw a valid card you’ll be able to play with it.
+
+Special cards
+
+Draw Card
+
+It forces next player to draw 2 cards and skip turn. If next player has also a Draw card (+1 or +4), that player will be able to discard it, so the next player will have to draw the sum of the draw cards on the table or to discard another one and so on. If it is the fists card on the game, the rules affect to the first player.
+
+This card has a value of 20 points in rounds game modality.
+
+
+Skip Card
+
+When this card is discarded, it skips next player’s turn. If this is the first card on the the game, the first player will skip his/her turn.
+
+This card has a value of 20 points in rounds game modality.
+
+
+Reverse Card
+
+This card switches the game direction (from clockwise to counterclockwise, and viceversa). The direction is shown with a pair of arrows on the table.
+
+This card has a value of 20 points in rounds game modality.
+
+Special cards
+
+Wildcard
+
+Thw player who has this card will be able to discard it anytime, unless he/she is forced to draw card by an other player. When discarded, you’ll have to choose wich will be the current color in game.
+
+This card has a value of 50 points in rounds game modality.
+
+
+Wildcard draw +4
+
+This card has the same effect than the Wildcard, but it also forces next player to rdraw 4 cards and skip his/her turn. If next player has also a Draw card (+1 or +4), that player will be able to discard it, so the next player will have to draw the sum of the draw cards on the table or to discard another one and so on. If it is the fists card on the game, the rules affect to the first player.
+
+This card has a value of 50 points in rounds game modality.
+
+Last card
+
+When a player has only 2 cards, he/she will have to press “last one!” button before discarding one of them to warn other players that this is your last card.
+
+The rest of the players should pay attention in case an other player doesn’t press that button. In that case, they will be able to press the “draw +2″ button to denounce that player, the one will have to draw 2 cards from the deck. If that player actually warned about the last card, the complainant will be the one drawing 2 cards.
+
+When the deck is empty, the discarded cards will be shuffled and used as the Deck again.
+
+When a player discards his/her last card, he/she will win the game or the round.
+
+</div> 
+
+</div> 
+ 
+      <hr> 
+{% endblock %}
+
+
+{% block footer %}
+  <footer> 
+    <p>&copy; Company 2014</p> 
+  </footer> 
+{% endblock %}

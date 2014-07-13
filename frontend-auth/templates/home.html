@@ -1,0 +1,26 @@
+{% extends "inner_base.html" %}
+
+{% block title %}Welcome Inside!{% endblock %}
+    {% block header %}Welcome to Luno!{% endblock %} 
+{% block main %}
+ 
+
+      <!-- Main hero unit for a primary marketing message or call to action --> 
+      <div> 
+
+<p>To start playing press the Play now! button. Remember that you must wager a minimum of 50 coins to play.</p>
+
+<p>The game begins when all players have finished their game or when the game creator presses start game and all other players accept.</p>
+
+
+        <p><a href="/game" class="btn btn-primary btn-large">Play now! &raquo;</a></p>
+        <p>Current user: 
+        {{ session['username'] }}
+        </p>
+        <p>Switch: {{ switch }}
+      </div> 
+
+
+    
+ 
+{% endblock %}
